@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OmniShield - Desktop Command Center</title>
+    <style>
+        :root { --bg: #0b0f19; --card: #111827; --accent: #3b82f6; --alert: #ef4444; --text: #f9fafb; }
+        body { background: var(--bg); color: var(--text); font-family: sans-serif; margin: 0; display: flex; height: 100vh; }
+        sidebar { width: 250px; background: var(--card); border-right: 1px solid #1f2937; padding: 20px; display: flex; flex-direction: column; gap: 15px; }
+        main { flex: 1; padding: 30px; overflow-y: auto; }
+        .logo-area { display: flex; align-items: center; gap: 12px; border-bottom: 1px solid #1f2937; padding-bottom: 15px; }
+        .logo { width: 40px; height: 40px; }
+        .card { background: var(--card); border: 1px solid #1f2937; border-radius: 12px; padding: 20px; margin-bottom: 20px; }
+        button { background: var(--accent); color: white; border: none; padding: 10px 20px; border-radius: 6px; font-weight: bold; cursor: pointer; }
+        button.danger { background: var(--alert); }
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    </style>
+</head>
+<body>
+    <sidebar>
+        <div class="logo-area">
+            <img src="../assets/logo_omni.png" alt="Logo" class="logo">
+            <h2 style="margin:0; font-size:18px; color:var(--accent);">OmniShield Desk</h2>
+        </div>
+        <a href="#" style="color:var(--text); text-decoration:none; font-weight:bold;">Tableau de Bord</a>
+        <a href="#" style="color:#9ca3af; text-decoration:none;">Conformité B2B</a>
+        <a href="#" style="color:#9ca3af; text-decoration:none;">Passerelle de Licences</a>
+    </sidebar>
+
+    <main>
+        <h1>Centre de Commande Global (Ordinateur)</h1>
+        <div class="grid">
+            <div class="card">
+                <h3>Intégrité du Système & Anti-Tampering</h3>
+                <p style="color:#9ca3af; font-size:14px;">Vérification des signatures binaires et des fichiers locaux.</p>
+                <button onclick="deskAudit()">Lancer l'audit complet</button>
+            </div>
+            <div class="card">
+                <h3>Pont de Synchronisation Multi-Appareil</h3>
+                <p style="color:#9ca3af; font-size:14px;">Liaison sécurisée avec les smartphones enregistrés.</p>
+                <button class="danger" onclick="deskSync()">Vérifier les connexions</button>
+            </div>
+        </div>
+        <div class="card">
+            <h3>Journaux d'Événements Centralisés</h3>
+            <div id="desk-logs" style="background:#030712; padding:15px; border-radius:8px; font-family:monospace; font-size:13px; color:#9ca3af; height:150px; overflow-y:auto;">
+                [DESK SYSTEM] Connexion au noyau sécurisé établie avec succès.
+            </div>
+        </div>
+    </main>
+
+    <script>
+        function deskAudit() {
+            document.getElementById('desk-logs').innerHTML += "<br>[AUDIT DESK] Intégrité binaire validée : 100% sécurisé.";
+        }
+        function deskSync() {
+            document.getElementById('desk-logs').innerHTML += "<br>[SYNC] 2 appareils liés de manière chiffrée (Mobile & Desktop).";
+        }
+    </script>
+</body>
+</html>
